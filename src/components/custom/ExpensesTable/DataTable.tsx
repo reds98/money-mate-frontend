@@ -1,4 +1,6 @@
 "use client"
+import * as React from "react"
+
 import { Button } from "@/components/ui/button"
 import {
   ColumnDef,
@@ -6,6 +8,9 @@ import {
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
+  SortingState,
+  getSortedRowModel,
+
 } from "@tanstack/react-table"
 
 import {
@@ -26,11 +31,17 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const table = useReactTable({
+    const [sorting, setSorting] = React.useState<SortingState>([])
+    const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    state: {
+      sorting,
+    },
 
   })
 
