@@ -3,15 +3,25 @@ import { Payment,columns } from '../custom/ExpensesTable/column'
 import { DataTable } from '../custom/ExpensesTable/DataTable'
 
  function getData(): Payment[] {
-  // Fetch data from your API here.
-
-  // export type Payment = {
-  //   id: string
-  //   name:string
-  //   amount: number
-  //   account:string
-  //   date: Date
-  // }
+  function generateId() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+  
+  const items = [];
+  const categories = ['Compra de ropa', 'Compra de alimentos', 'Pago de servicios', 'Entretenimiento', 'Transporte'];
+  const accounts = ['Cuenta de Ahorros', 'Cuenta Corriente'];
+  
+  for (let i = 0; i < 35; i++) {
+    const item = {
+      id: generateId(),
+      name: categories[Math.floor(Math.random() * categories.length)],
+      amount: Math.floor(Math.random() * 500) + 100,
+      account: accounts[Math.floor(Math.random() * accounts.length)],
+      date: new Date(2023, 10, Math.floor(Math.random() * 30) + 1).toISOString(),
+    };
+    items.push(item);
+  }
+  return items
   
   return [
     {
