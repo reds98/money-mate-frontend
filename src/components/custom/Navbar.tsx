@@ -49,7 +49,7 @@ export default function Navbar() {
 
                         </Sheet>
                         <Link to={"/"} className='ml-4 lg:ml-0'>
-                            <h1 className='text-xl font-bold'>Money Mate</h1>
+                            <h1 className='text-2xl font-bold'>Money Mate</h1>
                         </Link>
                     </div>
                     <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
